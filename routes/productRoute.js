@@ -13,3 +13,4 @@ router.delete("/delete/:productId", isAuthenticated, isAdmin, deleteProduct);
 router.put("/update/:productId", isAuthenticated, isAdmin, multipleUpload, updateProduct);
 
 export default router;
+//
