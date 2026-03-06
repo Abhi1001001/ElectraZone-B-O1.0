@@ -139,7 +139,7 @@ export const updateProduct = async (req, res) => {
 
     // keep selected old images
     if(existingImages) {
-      const keepIds = json.parse(existingImages);
+      const keepIds = JSON.parse(existingImages);
       updatedImages = product.productImage.filter((image) => keepIds.includes(image.public_id));
 
       // delete only removed image
@@ -174,9 +174,10 @@ export const updateProduct = async (req, res) => {
     product.productImage = updatedImages;
 
     await product.save();
+    
     return res
       .status(200)
-      .json({ success: true, message: "Product updated successfully" });
+      .json({ success: true, message: "Product updated successfully", product });
 
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
